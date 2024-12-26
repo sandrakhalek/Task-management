@@ -18,11 +18,31 @@ function App() {
     });
   };
 
+  function handleAddProject(projectData) {
+    setProjectsState((prevState) => {
+      const newProject = {
+        ...projectData,
+        id: Math.random(),
+      };
+
+      return { ...prevState, projects: [...prevState.projects, newProject], selectedProjectId: undefined };
+    });
+  }
+
+  function handleCancelClick() {
+    setProjectsState((prevState) => {
+      return {
+        ...prevState,
+        selectedProjectId: undefined
+      }
+    })
+  }
+
   return (
     <main className="flex gap-8 items-end h-screen">
       <Sidebar projects={projectsState.projects} onAddClick={handleAddNewProjectClick} />
-      
-      {projectsState.selectedProjectId === null && <NewProject />}
+
+      {projectsState.selectedProjectId === null && <NewProject onAdd={handleAddProject} onCancel={handleCancelClick}/>}
       {projectsState.selectedProjectId === undefined && <NoProjectSelected onAddClick={handleAddNewProjectClick} />}
     </main>
   );
