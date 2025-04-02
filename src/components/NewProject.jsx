@@ -40,10 +40,10 @@ function NewProject({ onAdd, onCancel }) {
 
   return (
     <>
-      <Modal ref={dialogRef}>
-        <h2>Invalid Input</h2>
-        <p>Oops... Looks like you forgot to enter a value.</p>
-        <p>Please make sure you provide a valid value for every input field.</p>
+      <Modal ref={dialogRef} buttonCaption="Okay">
+        <h2 className='text-xl font-bold text-stone-700 my-4'>Invalid Input</h2>
+        <p className='text-stone-600 mb-4'>Oops... Looks like you forgot to enter a value.</p>
+        <p className='text-stone-600 mb-4'>Please make sure you provide a valid value for every input field.</p>
       </Modal>
       <div className="h-[95%] w-[35rem] pt-20">
         <menu className="flex items-center justify-end gap-4 my-4">
